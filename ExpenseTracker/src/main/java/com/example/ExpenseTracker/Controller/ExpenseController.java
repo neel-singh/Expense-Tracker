@@ -32,8 +32,7 @@ public class ExpenseController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Expense> deleteById(@PathVariable Long id){
-        Expense deletedExpense = expenseService.getById(id);
-        expenseService.deleteById(id);
+        Expense deletedExpense = expenseService.deleteById(id);
         return ResponseEntity.ok(deletedExpense);
     }
 
@@ -44,9 +43,9 @@ public class ExpenseController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Void> update(@RequestBody Expense expense, @PathVariable Long id){
-        expenseService.update(expense, id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Expense> update(@RequestBody Expense expense, @PathVariable Long id){
+        Expense updatedExpense = expenseService.update(expense, id);
+        return new ResponseEntity<>(updatedExpense, HttpStatus.OK);
     }
 
 }

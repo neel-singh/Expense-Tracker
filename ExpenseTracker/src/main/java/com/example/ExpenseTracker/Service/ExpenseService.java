@@ -1,5 +1,6 @@
 package com.example.ExpenseTracker.Service;
 
+import com.example.ExpenseTracker.Controller.ExpenseController;
 import com.example.ExpenseTracker.Entity.Expense;
 import com.example.ExpenseTracker.Repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class ExpenseService {
 
+    public ExpenseController expenseService;
     @Autowired
     private ExpenseRepository expenseRepository;
 
