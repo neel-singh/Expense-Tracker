@@ -6,6 +6,7 @@ import com.example.ExpenseTracker.Repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,4 +45,9 @@ public class ExpenseService {
 
         return expenseRepository.save(existingExpense);
     }
+
+    public List<Expense> getAll(){
+        return expenseRepository.findAll();
+    }
+
 }

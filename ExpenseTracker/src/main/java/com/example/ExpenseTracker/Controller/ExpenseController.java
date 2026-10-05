@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.noContent;
@@ -46,6 +47,12 @@ public class ExpenseController {
     public ResponseEntity<Expense> update(@RequestBody Expense expense, @PathVariable Long id){
         Expense updatedExpense = expenseService.update(expense, id);
         return new ResponseEntity<>(updatedExpense, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Expense>> findAll(){
+        List<Expense> list = expenseService.getAll();
+        return ResponseEntity.ok(list);
     }
 
 }
