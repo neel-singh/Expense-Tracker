@@ -1,7 +1,10 @@
 package com.example.ExpenseTracker.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
+import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -18,12 +21,13 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Amount is required")
+    @Positive
     private BigDecimal amount;
 
     private String title;
 
-    @Column(nullable = false)
+    @NotNull(message = "Date is required")
     private LocalDate date;
 
     @CreationTimestamp
